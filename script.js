@@ -6,6 +6,7 @@ async function getCountryByCode(countryCode){
         const flag = document.createElement('img');
         name.innerHTML = data[0].name.common;
         flag.src = data[0].flags.svg;
+        document.getElementById('bordering-countries').style.display = "block";
         document.getElementById('bordering-countries').appendChild(name);
         document.getElementById('bordering-countries').appendChild(flag);
     } catch(error){
@@ -27,10 +28,12 @@ async function searchCountry(countryName){
         const borders = data[0].borders;
         const country = data[0];
         if(borders){
+            document.getElementById('bordering-countries').innerHTML = "<h1>Bordering Countries</h1>"
             borders.forEach(element => {
             getCountryByCode(element);
         });
         }
+        document.getElementById('country-info').style.display = "block";
         document.getElementById('country-info').innerHTML = `
         <h2>${country.name.common}</h2>
         <p><strong>Capital:</strong> ${country.capital[0]}</p>
@@ -47,6 +50,8 @@ async function searchCountry(countryName){
 
 document.addEventListener('DOMContentLoaded',() =>{
     document.getElementById('loading-spinner').classList.add("hidden");
+    document.getElementById('bordering-countries').style.display = "none";
+    document.getElementById('country-info').style.display = "none";
 })
 
 
