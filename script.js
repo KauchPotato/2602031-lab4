@@ -19,7 +19,8 @@ async function searchCountry(countryName){
     try{
         document.getElementById('loading-spinner').classList.remove("hidden");
         document.getElementById('bordering-countries').innerHTML = '';
-        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+        if(countryName.trim() === "") throw "Please enter a valid country";
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}`);
         const data = await response.json();
         const borders = data[0].borders;
         const country = data[0];
