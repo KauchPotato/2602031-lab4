@@ -22,6 +22,7 @@ async function searchCountry(countryName){
         if(countryName.trim() === "") throw "Please enter a valid country";
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}`);
         const data = await response.json();
+        if (!data.ok) throw "Please enter a valid country"
         const borders = data[0].borders;
         const country = data[0];
         if(borders){
