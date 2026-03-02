@@ -17,7 +17,7 @@ async function getCountryByCode(countryCode){
 
 async function searchCountry(countryName){
     try{
-        document.getElementById('loading-spinner').classList.remove("hidden");
+        document.getElementById("loading-spinner").classList.remove("hidden");
         document.getElementById('bordering-countries').innerHTML = '';
         if(countryName.trim() === "") throw "Please enter a valid country";
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}`);
@@ -42,6 +42,10 @@ async function searchCountry(countryName){
         document.getElementById('loading-spinner').classList.add("hidden");
     }
 }
+
+document.addEventListener('DOMContentLoaded',() =>{
+    document.getElementById('loading-spinner').classList.add("hidden");
+})
 
 
 
