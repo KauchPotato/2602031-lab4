@@ -22,7 +22,7 @@ async function searchCountry(countryName){
         document.getElementById('bordering-countries').innerHTML = '';
         document.getElementById('country-info').innerHTML = '';
         if(countryName.trim() === "") throw "Please enter a valid country";
-        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim()}?fullText=true`);
         const data = await response.json();
         if (!response.ok) throw "Please enter a valid country"
         const borders = data[0].borders;
